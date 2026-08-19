@@ -28,7 +28,7 @@ def getLiveGame():
   date = getFormattedDate()
   game = statsapi.schedule(date=date, team=TEAM_ID)
 
-  if game:
+  if game and game[0]["status"] == "In Progress":
     return {
       "game_id": game[0]["game_id"],
       "away_name": game[0]["away_name"],
